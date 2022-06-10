@@ -1,7 +1,9 @@
 import csv
 
+from typing import List
 
-def get_phones_from_file(file: str) -> list:
+
+def get_phones_from_file(file: str) -> List:
     """
     Функция, которая получает на вход имя файла и считывает данные, возвращает список полученных данных.
 
@@ -15,17 +17,23 @@ def get_phones_from_file(file: str) -> list:
         return data_list
 
 
-def unpack_data(data_from_file: list) -> list[str]:
+def unpack_data(data_from_file: list) -> List[str]:
+    """
+    Принимает на вход список нормеров и объединяет в один список.
+
+    :param data_from_file: Список списков номеров
+    :return: Единый список номеров
+    """
     cleaned_data = []
 
     for row in data_from_file:
-        for data in row:
-            cleaned_data.append(data)
+        for i_data in row:
+            cleaned_data.append(i_data)
 
     return cleaned_data
 
-file_name = 'test.csv'
+
+file_name = 'Buyers.csv'
+
 data = get_phones_from_file(file_name)
 clean_data = unpack_data(data)
-
-print(clean_data)
